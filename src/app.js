@@ -1,38 +1,27 @@
 import "bootstrap";
 import "./style.css";
-
-
 import "./assets/img/rigo-baby.jpg";
 import "./assets/img/4geeks.ico";
 
-window.onload = function() {
-
-  let pronoun = ['my', 'your', 'the'];
-  let adj = ['fast', 'code', 'web', 'new'];
-  let noun = ['studio', 'folio', 'scripter', 'cables', 'intern'];
-  let extensions = ['.com', '.io', '.er', '.es', '.net'];
-
+window.onload = function () {
+  let pronombres = ['my', 'your', 'the'];
+  let adjetivos = ['fast', 'code', 'web', 'new'];
+  let sustantivos = ['studio', 'folio', 'scripter', 'cables', 'intern'];
+  let extensiones = ['.com', '.io', '.er', '.es', '.net'];
   let dominiosGenerados = [];
 
-  pronoun.forEach((pron) => {
-    adj.forEach((adj) => {
-      noun.forEach((noun) => {
-        
-        let nombreDeDominios = pron + adj + noun;
-
-        extensions.forEach((ext) => {
-          
-          let hack = ext.slice(1);
-          
-          if (noun.endsWith(hack)) {
-            let raiz = noun.slice(0, -hack.length);
-            
-            dominiosGenerados.push(pron + adj + raiz + ext);
-
+  pronombres.forEach((pronombre) => {
+    adjetivos.forEach((adjetivo) => {
+      sustantivos.forEach((sustantivo) => {
+        let nombreDeDominios = pronombre + adjetivo + sustantivo;
+        extensiones.forEach((extension) => {
+          let hack = extension.slice(1);
+          if (sustantivo.endsWith(hack)) {
+            let raiz = sustantivo.slice(0, -hack.length);
+            dominiosGenerados.push(pronombre + adjetivo + raiz + extension);
           } else {
-            let nombreDominiosConExt = nombreDeDominios + ext;
-
-            dominiosGenerados.push(nombreDominiosConExt);
+            let nombreDominiosConExtension = nombreDeDominios + extension;
+            dominiosGenerados.push(nombreDominiosConExtension);
           }
         });
       });
@@ -40,7 +29,7 @@ window.onload = function() {
   });
 
   let contenedor = document.getElementById("lista-dominios");
-
   contenedor.innerHTML = dominiosGenerados.join("<br>");
 };
+
 
